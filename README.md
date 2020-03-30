@@ -6,6 +6,8 @@
 
 插件位置：src/components/sliders.vue
 
+图片位置：src/images/line.png
+
 使用：复制插件到项目插件文件夹，在单文件组件中，使用 import 引入，并且在 components 注册
 
 ```vue
