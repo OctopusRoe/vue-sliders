@@ -1,24 +1,62 @@
-# vue-sliders
+## 验证滑块的 Vue 单文件插件
 
-## Project setup
-```
-npm install
+能自动适应屏幕大小，直接引入后使用即可
+
+下载后用 npm run serve 查看，用chrome浏览器 调成手机模式实验
+
+插件位置：src/components/sliders.vue
+
+使用：复制插件到项目插件文件夹，在单文件组件中，使用 import 引入，并且在 components 注册
+
+```vue
+<template>
+  <div>
+    <sliders></sliders>
+  </div>
+</template>
+<script>
+import sliders from '../components/sliders'
+
+export default {
+  components: {
+    sliders
+  }
+}
+</script>
 ```
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+#### sliders插件的 attribute
 
-### Compiles and minifies for production
-```
-npm run build
-```
+attribute | 必须 | 作用 |
+-|-|-|
+getinfo | 是 | 用于接收验证成功后，sliders插件返回的信息 |
+touchmove | 否 | 可以添加新的 touchmove 事件 |
+touchend | 否 | 可以添加新的 touchend 事件 |
 
-### Lints and fixes files
-```
-npm run lint
-```
+```vue
+<template>
+  <div>
+    <sliders @getinfo='getInfo'></sliders>
+    <div>{{info}}</div>
+  </div>
+</template>
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+<script>
+import sliders from '../components/sliders'
+export default {
+  data: function () {
+    return {
+      info: false
+    }
+  },
+  methods: {
+    getInfo (e) {
+      this.info = e
+    }
+  },
+  components: {
+    sliders
+  }
+}
+</script>
+```
